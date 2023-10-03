@@ -1,26 +1,24 @@
-"use strict";
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.forwardemail.net",
-  port: 465,
+  host: 'smtp.gmail.com',
   secure: true,
+  port: 465,
   auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: "REPLACE-WITH-YOUR-ALIAS@YOURDOMAIN.COM",
-    pass: "REPLACE-WITH-YOUR-GENERATED-PASSWORD",
-  },
+      user: 'vaap2099@gmail.com',
+      pass: 'khdlcyudqbbjsnqr'
+  }
 });
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main() {
+async function sendMail() {
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
-    to: "bar@example.com, baz@example.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    from: 'vaap2099@gmail.com', // sender address
+    to: "vaap2099@yahoo.com", // list of receivers
+    subject: "Prueba ✔", // Subject line
+    text: "Esta es una prueba", // plain text body
+    html: "<b>esta es una prueba?</b>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
@@ -33,4 +31,4 @@ async function main() {
   //
 }
 
-main().catch(console.error);
+sendMail();
