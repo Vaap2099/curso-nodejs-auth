@@ -1,12 +1,10 @@
-const bcrypt=require('bcrypt');
-
+const bcrypt = require('bcrypt');
 
 async function verifyPassword() {
   const myPassword = 'admin 123 .202';
-  const hash = "$2b$10$OMleuIXpzd8RJNuVRNLcW.nC0QGdpdO/ingBrOvTpmKsLm9ylFA0C";
+  const hash = '$2b$10$.q.8/z3PP1KrruUqNuK9quJgCHQ.5S4w3.FyKmHEGEFqc19OVEqBW';
   const isMatch = await bcrypt.compare(myPassword, hash);
   console.log(isMatch);
 }
 
 verifyPassword();
-
