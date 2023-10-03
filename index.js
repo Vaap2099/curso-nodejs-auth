@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
-const { checkApiKey } = require('./middlewares/auth.handler')
+const { checkApiKey } = require('./middlewares/auth.handler');
+const passport = require('./utils/auth');
 
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
@@ -21,6 +22,9 @@ const options = {
   }
 }
 app.use(cors(options));
+app.use(passport.initialize());
+
+require('./utils/auth');
 
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
